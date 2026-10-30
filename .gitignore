@@ -91,3 +91,11 @@ secrets.dart
 *.p8
 *.cer
 *.mobileprovision
+
+# ── Internal / generated markdown files ────────────────────────────────────
+# Keep: README.md, AGENTS.md
+ui_redesign_progress.md
+release_validation_*.md
+Media_Library_App_UI_Spec.md
+media_library_firebase_complete_implementation_plan.md
+graphify-out/
