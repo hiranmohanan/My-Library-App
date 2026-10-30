@@ -11,22 +11,22 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+Thumbs.db
 
-# IntelliJ related
+# IntelliJ / Android Studio related
 *.iml
 *.ipr
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
+# VS Code – uncomment if you do not want to share launch configs
 #.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+.flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
@@ -47,6 +47,47 @@ app.*.map.json
 # Android upload signing credentials
 /android/key.properties
 /android/app/upload-keystore.jks
+**/*.keystore
+**/*.jks
 
-# Optional local API configuration for --dart-define-from-file
+# macOS build artifacts
+/macos/Flutter/ephemeral/
+
+# Linux build artifacts
+/linux/flutter/ephemeral/
+
+# Windows build artifacts
+/windows/flutter/ephemeral/
+
+# Web – generated files
+/web/flutter_bootstrap.js
+
+# ── Credentials & secrets ──────────────────────────────────────────────────
+
+# Firebase – platform config files (contain project IDs and API keys)
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+firebase_app_id_file.json
+/lib/firebase_options.dart
+
+# Firebase CLI / FlutterFire CLI local config
+.firebaserc
+firebase.json
+
+# TMDB / Google Books / any third-party API keys
+*.env
+.env
+.env.*
+!.env.example
 /private_api.json
+api_keys.dart
+secrets.dart
+**/secrets/
+
+# General secret / cert files
+*.pem
+*.p12
+*.p8
+*.cer
+*.mobileprovision
