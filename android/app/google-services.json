@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "482657847943",
+    "firebase_url": "https://my-library-app-ef604-default-rtdb.firebaseio.com",
+    "project_id": "my-library-app-ef604",
+    "storage_bucket": "my-library-app-ef604.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482657847943:android:156d8d70a7233f89cf4622",
+        "android_client_info": {
+          "package_name": "com.hm.mymedialibrary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsiEj7TOifIpfOeulQj7PSYDtRwdLnE4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

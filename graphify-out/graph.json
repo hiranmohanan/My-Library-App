@@ -1,0 +1,1195 @@
+{
+  "files": [
+    "lib/app/app.dart",
+    "lib/app/app_router.dart",
+    "lib/app/app_theme.dart",
+    "lib/app/core/constants/api_configuration.dart",
+    "lib/app/core/constants/firebase_options.dart",
+    "lib/app/core/constants/media_labels.dart",
+    "lib/app/data/api/api_client.dart",
+    "lib/app/data/api/api_exception.dart",
+    "lib/app/data/api/api_response.dart",
+    "lib/app/data/datasources/media_local_data_source.dart",
+    "lib/app/data/datasources/profile_local_data_source.dart",
+    "lib/app/data/datasources/remote/firebase_media_data_source.dart",
+    "lib/app/data/datasources/remote/google_books_remote_data_source.dart",
+    "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
+    "lib/app/data/models/media_record.dart",
+    "lib/app/data/repositories/firebase_auth_repository.dart",
+    "lib/app/data/repositories/media_repository_impl.dart",
+    "lib/app/data/repositories/tmdb_trending_repository.dart",
+    "lib/app/data/services/firebase_auth_service.dart",
+    "lib/app/data/services/firebase_database_service.dart",
+    "lib/app/data/services/firebase_storage_service.dart",
+    "lib/app/data/services/local_database_factory.dart",
+    "lib/app/data/services/local_database_factory_io.dart",
+    "lib/app/data/services/local_database_factory_web.dart",
+    "lib/app/data/services/local_storage_service.dart",
+    "lib/app/data/services/network_info_service.dart",
+    "lib/app/data/services/sembast_local_storage_service.dart",
+    "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+    "lib/app/modules/add_media/bloc/add_media_event.dart",
+    "lib/app/modules/add_media/bloc/add_media_state.dart",
+    "lib/app/modules/add_media/pages/add_media_page.dart",
+    "lib/app/modules/authentication/auth_gate.dart",
+    "lib/app/modules/authentication/bloc/auth_bloc.dart",
+    "lib/app/modules/authentication/bloc/auth_event.dart",
+    "lib/app/modules/authentication/bloc/auth_state.dart",
+    "lib/app/modules/authentication/domain/auth_repository.dart",
+    "lib/app/modules/authentication/domain/auth_use_cases.dart",
+    "lib/app/modules/authentication/pages/otp_page.dart",
+    "lib/app/modules/authentication/pages/phone_page.dart",
+    "lib/app/modules/authentication/pages/profile_setup_page.dart",
+    "lib/app/modules/authentication/pages/welcome_page.dart",
+    "lib/app/modules/connectivity/bloc/connectivity_bloc.dart",
+    "lib/app/modules/connectivity/bloc/connectivity_event.dart",
+    "lib/app/modules/connectivity/bloc/connectivity_state.dart",
+    "lib/app/modules/home/bloc/home_bloc.dart",
+    "lib/app/modules/home/bloc/home_event.dart",
+    "lib/app/modules/home/bloc/home_state.dart",
+    "lib/app/modules/home/bloc/trending_bloc.dart",
+    "lib/app/modules/home/pages/home_shell_page.dart",
+    "lib/app/modules/home/pages/home_tab.dart",
+    "lib/app/modules/library/bloc/library_bloc.dart",
+    "lib/app/modules/library/bloc/library_event.dart",
+    "lib/app/modules/library/bloc/library_state.dart",
+    "lib/app/modules/library/pages/library_page.dart",
+    "lib/app/modules/media/domain/media_candidate.dart",
+    "lib/app/modules/media/domain/media_entity.dart",
+    "lib/app/modules/media/domain/media_offline_exception.dart",
+    "lib/app/modules/media/domain/media_repository.dart",
+    "lib/app/modules/media/domain/media_status.dart",
+    "lib/app/modules/media/domain/media_type.dart",
+    "lib/app/modules/media/domain/media_use_cases.dart",
+    "lib/app/modules/media/domain/trending_repository.dart",
+    "lib/app/modules/media_details/bloc/media_details_bloc.dart",
+    "lib/app/modules/media_details/bloc/media_details_event.dart",
+    "lib/app/modules/media_details/bloc/media_details_state.dart",
+    "lib/app/modules/media_details/pages/media_details_page.dart",
+    "lib/app/modules/navigation/bloc/navigation_bloc.dart",
+    "lib/app/modules/navigation/bloc/navigation_event.dart",
+    "lib/app/modules/navigation/bloc/navigation_state.dart",
+    "lib/app/modules/profile/bloc/profile_bloc.dart",
+    "lib/app/modules/profile/bloc/profile_event.dart",
+    "lib/app/modules/profile/bloc/profile_state.dart",
+    "lib/app/modules/profile/domain/profile_entity.dart",
+    "lib/app/modules/profile/pages/profile_page.dart",
+    "lib/app/modules/search/bloc/candidate_details_bloc.dart",
+    "lib/app/modules/search/bloc/search_bloc.dart",
+    "lib/app/modules/search/bloc/search_event.dart",
+    "lib/app/modules/search/bloc/search_state.dart",
+    "lib/app/modules/search/pages/candidate_details_page.dart",
+    "lib/app/modules/search/pages/search_page.dart",
+    "lib/app/modules/settings/bloc/settings_bloc.dart",
+    "lib/app/modules/settings/bloc/settings_event.dart",
+    "lib/app/modules/settings/bloc/settings_state.dart",
+    "lib/app/modules/settings/pages/settings_page.dart",
+    "lib/app/theme_controller.dart",
+    "lib/app/widgets/app_section_header.dart",
+    "lib/app/widgets/app_text.dart",
+    "lib/app/widgets/content_state.dart",
+    "lib/app/widgets/loading_skeleton_grid.dart",
+    "lib/app/widgets/loading_skeleton_list.dart",
+    "lib/app/widgets/media_candidate_tile.dart",
+    "lib/app/widgets/media_details_content.dart",
+    "lib/app/widgets/media_editor_fields.dart",
+    "lib/app/widgets/media_grid_card.dart",
+    "lib/app/widgets/media_list_tile.dart",
+    "lib/app/widgets/media_poster.dart",
+    "lib/app/widgets/offline_banner.dart",
+    "lib/core/bootstrap/app_bootstrap.dart",
+    "lib/core/widgets/feature_placeholder.dart",
+    "lib/features/home/home_page.dart",
+    "lib/features/settings/settings_page.dart",
+    "lib/main.dart",
+    "test/api_foundation_test.dart",
+    "test/app_scaffold_test.dart",
+    "test/auth_flow_test.dart",
+    "test/local_storage_test.dart",
+    "test/media_blocs_test.dart",
+    "test/media_domain_test.dart",
+    "test/media_repository_test.dart",
+    "test/media_ui_flow_test.dart"
+  ],
+  "imports": {
+    "lib/app/app.dart": [
+      "lib/app/app_router.dart",
+      "lib/app/app_theme.dart",
+      "lib/app/modules/authentication/auth_gate.dart",
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart",
+      "lib/app/theme_controller.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "lib/features/home/home_page.dart"
+    ],
+    "lib/app/app_router.dart": [
+      "lib/app/modules/settings/pages/settings_page.dart",
+      "lib/app/theme_controller.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/app_theme.dart": [],
+    "lib/app/core/constants/api_configuration.dart": [],
+    "lib/app/core/constants/firebase_options.dart": [],
+    "lib/app/core/constants/media_labels.dart": [
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "lib/app/data/api/api_client.dart": [
+      "lib/app/data/api/api_exception.dart",
+      "lib/app/data/api/api_response.dart"
+    ],
+    "lib/app/data/api/api_exception.dart": [],
+    "lib/app/data/api/api_response.dart": [
+      "lib/app/data/api/api_exception.dart"
+    ],
+    "lib/app/data/datasources/media_local_data_source.dart": [
+      "lib/app/data/services/local_storage_service.dart"
+    ],
+    "lib/app/data/datasources/profile_local_data_source.dart": [
+      "lib/app/data/services/local_storage_service.dart"
+    ],
+    "lib/app/data/datasources/remote/firebase_media_data_source.dart": [
+      "lib/app/data/services/firebase_database_service.dart"
+    ],
+    "lib/app/data/datasources/remote/google_books_remote_data_source.dart": [
+      "lib/app/data/api/api_client.dart",
+      "lib/app/data/api/api_exception.dart"
+    ],
+    "lib/app/data/datasources/remote/tmdb_remote_data_source.dart": [
+      "lib/app/data/api/api_client.dart",
+      "lib/app/data/api/api_exception.dart"
+    ],
+    "lib/app/data/models/media_record.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "lib/app/data/repositories/firebase_auth_repository.dart": [
+      "lib/app/data/datasources/profile_local_data_source.dart",
+      "lib/app/data/services/firebase_auth_service.dart",
+      "lib/app/data/services/firebase_database_service.dart",
+      "lib/app/modules/authentication/domain/auth_repository.dart"
+    ],
+    "lib/app/data/repositories/media_repository_impl.dart": [
+      "lib/app/data/api/api_exception.dart",
+      "lib/app/data/datasources/media_local_data_source.dart",
+      "lib/app/data/datasources/remote/firebase_media_data_source.dart",
+      "lib/app/data/datasources/remote/google_books_remote_data_source.dart",
+      "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
+      "lib/app/data/models/media_record.dart",
+      "lib/app/data/services/network_info_service.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_offline_exception.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart"
+    ],
+    "lib/app/data/repositories/tmdb_trending_repository.dart": [
+      "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
+      "lib/app/data/models/media_record.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/trending_repository.dart"
+    ],
+    "lib/app/data/services/firebase_auth_service.dart": [],
+    "lib/app/data/services/firebase_database_service.dart": [],
+    "lib/app/data/services/firebase_storage_service.dart": [],
+    "lib/app/data/services/local_database_factory.dart": [
+      "lib/app/data/services/local_database_factory_io.dart"
+    ],
+    "lib/app/data/services/local_database_factory_io.dart": [],
+    "lib/app/data/services/local_database_factory_web.dart": [],
+    "lib/app/data/services/local_storage_service.dart": [],
+    "lib/app/data/services/network_info_service.dart": [],
+    "lib/app/data/services/sembast_local_storage_service.dart": [
+      "lib/app/data/services/local_storage_service.dart"
+    ],
+    "lib/app/modules/add_media/bloc/add_media_bloc.dart": [
+      "lib/app/modules/add_media/bloc/add_media_event.dart",
+      "lib/app/modules/add_media/bloc/add_media_state.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_offline_exception.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart"
+    ],
+    "lib/app/modules/add_media/bloc/add_media_event.dart": [],
+    "lib/app/modules/add_media/bloc/add_media_state.dart": [],
+    "lib/app/modules/add_media/pages/add_media_page.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/loading_skeleton_list.dart",
+      "lib/app/widgets/media_editor_fields.dart",
+      "lib/app/widgets/media_poster.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/authentication/auth_gate.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/modules/authentication/pages/otp_page.dart",
+      "lib/app/modules/authentication/pages/phone_page.dart",
+      "lib/app/modules/authentication/pages/profile_setup_page.dart",
+      "lib/app/modules/authentication/pages/welcome_page.dart",
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "lib/features/home/home_page.dart"
+    ],
+    "lib/app/modules/authentication/bloc/auth_bloc.dart": [
+      "lib/app/modules/authentication/bloc/auth_event.dart",
+      "lib/app/modules/authentication/bloc/auth_state.dart",
+      "lib/app/modules/authentication/domain/auth_repository.dart",
+      "lib/app/modules/authentication/domain/auth_use_cases.dart"
+    ],
+    "lib/app/modules/authentication/bloc/auth_event.dart": [],
+    "lib/app/modules/authentication/bloc/auth_state.dart": [],
+    "lib/app/modules/authentication/domain/auth_repository.dart": [],
+    "lib/app/modules/authentication/domain/auth_use_cases.dart": [
+      "lib/app/modules/authentication/domain/auth_repository.dart"
+    ],
+    "lib/app/modules/authentication/pages/otp_page.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/modules/authentication/pages/phone_page.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/modules/authentication/pages/profile_setup_page.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/modules/authentication/pages/welcome_page.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/modules/connectivity/bloc/connectivity_bloc.dart": [
+      "lib/app/data/services/network_info_service.dart",
+      "lib/app/modules/connectivity/bloc/connectivity_event.dart",
+      "lib/app/modules/connectivity/bloc/connectivity_state.dart"
+    ],
+    "lib/app/modules/connectivity/bloc/connectivity_event.dart": [],
+    "lib/app/modules/connectivity/bloc/connectivity_state.dart": [],
+    "lib/app/modules/home/bloc/home_bloc.dart": [
+      "lib/app/modules/home/bloc/home_event.dart",
+      "lib/app/modules/home/bloc/home_state.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart"
+    ],
+    "lib/app/modules/home/bloc/home_event.dart": [],
+    "lib/app/modules/home/bloc/home_state.dart": [],
+    "lib/app/modules/home/bloc/trending_bloc.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/trending_repository.dart"
+    ],
+    "lib/app/modules/home/pages/home_shell_page.dart": [
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart",
+      "lib/app/modules/home/bloc/home_bloc.dart",
+      "lib/app/modules/home/bloc/trending_bloc.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/navigation/bloc/navigation_bloc.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
+      "lib/app/modules/search/bloc/search_bloc.dart",
+      "lib/app/modules/search/pages/search_page.dart",
+      "lib/app/widgets/offline_banner.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/home/pages/home_tab.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/home/bloc/home_bloc.dart",
+      "lib/app/modules/home/bloc/trending_bloc.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/navigation/bloc/navigation_bloc.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "lib/app/widgets/app_section_header.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/content_state.dart",
+      "lib/app/widgets/loading_skeleton_list.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/library/bloc/library_bloc.dart": [
+      "lib/app/modules/library/bloc/library_event.dart",
+      "lib/app/modules/library/bloc/library_state.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart"
+    ],
+    "lib/app/modules/library/bloc/library_event.dart": [],
+    "lib/app/modules/library/bloc/library_state.dart": [],
+    "lib/app/modules/library/pages/library_page.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/navigation/bloc/navigation_bloc.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/content_state.dart",
+      "lib/app/widgets/loading_skeleton_grid.dart",
+      "lib/app/widgets/loading_skeleton_list.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/app/widgets/media_list_tile.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/media/domain/media_candidate.dart": [
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "lib/app/modules/media/domain/media_entity.dart": [
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "lib/app/modules/media/domain/media_offline_exception.dart": [],
+    "lib/app/modules/media/domain/media_repository.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "lib/app/modules/media/domain/media_status.dart": [
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "lib/app/modules/media/domain/media_type.dart": [],
+    "lib/app/modules/media/domain/media_use_cases.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "lib/app/modules/media/domain/trending_repository.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart"
+    ],
+    "lib/app/modules/media_details/bloc/media_details_bloc.dart": [
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_offline_exception.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/media_details/bloc/media_details_event.dart",
+      "lib/app/modules/media_details/bloc/media_details_state.dart"
+    ],
+    "lib/app/modules/media_details/bloc/media_details_event.dart": [],
+    "lib/app/modules/media_details/bloc/media_details_state.dart": [],
+    "lib/app/modules/media_details/pages/media_details_page.dart": [
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/content_state.dart",
+      "lib/app/widgets/loading_skeleton_list.dart",
+      "lib/app/widgets/media_details_content.dart",
+      "lib/app/widgets/media_editor_fields.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/navigation/bloc/navigation_bloc.dart": [
+      "lib/app/modules/navigation/bloc/navigation_event.dart",
+      "lib/app/modules/navigation/bloc/navigation_state.dart"
+    ],
+    "lib/app/modules/navigation/bloc/navigation_event.dart": [],
+    "lib/app/modules/navigation/bloc/navigation_state.dart": [],
+    "lib/app/modules/profile/bloc/profile_bloc.dart": [
+      "lib/app/data/datasources/profile_local_data_source.dart",
+      "lib/app/modules/authentication/domain/auth_use_cases.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/profile/bloc/profile_event.dart",
+      "lib/app/modules/profile/bloc/profile_state.dart",
+      "lib/app/modules/profile/domain/profile_entity.dart"
+    ],
+    "lib/app/modules/profile/bloc/profile_event.dart": [],
+    "lib/app/modules/profile/bloc/profile_state.dart": [],
+    "lib/app/modules/profile/domain/profile_entity.dart": [],
+    "lib/app/modules/profile/pages/profile_page.dart": [
+      "lib/app/modules/navigation/bloc/navigation_bloc.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/content_state.dart",
+      "lib/app/widgets/loading_skeleton_list.dart"
+    ],
+    "lib/app/modules/search/bloc/candidate_details_bloc.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart"
+    ],
+    "lib/app/modules/search/bloc/search_bloc.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/search/bloc/search_event.dart",
+      "lib/app/modules/search/bloc/search_state.dart"
+    ],
+    "lib/app/modules/search/bloc/search_event.dart": [],
+    "lib/app/modules/search/bloc/search_state.dart": [],
+    "lib/app/modules/search/pages/candidate_details_page.dart": [
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/search/bloc/candidate_details_bloc.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/media_details_content.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/search/pages/search_page.dart": [
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/search/bloc/search_bloc.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/content_state.dart",
+      "lib/app/widgets/loading_skeleton_list.dart",
+      "lib/app/widgets/media_candidate_tile.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/settings/bloc/settings_bloc.dart": [
+      "lib/app/modules/settings/bloc/settings_event.dart",
+      "lib/app/modules/settings/bloc/settings_state.dart",
+      "lib/app/theme_controller.dart"
+    ],
+    "lib/app/modules/settings/bloc/settings_event.dart": [],
+    "lib/app/modules/settings/bloc/settings_state.dart": [],
+    "lib/app/modules/settings/pages/settings_page.dart": [
+      "lib/app/modules/settings/bloc/settings_bloc.dart",
+      "lib/app/theme_controller.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/theme_controller.dart": [],
+    "lib/app/widgets/app_section_header.dart": [
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/widgets/app_text.dart": [],
+    "lib/app/widgets/content_state.dart": [
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/widgets/loading_skeleton_grid.dart": [],
+    "lib/app/widgets/loading_skeleton_list.dart": [],
+    "lib/app/widgets/media_candidate_tile.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/media_poster.dart"
+    ],
+    "lib/app/widgets/media_details_content.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/media_poster.dart"
+    ],
+    "lib/app/widgets/media_editor_fields.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/app/widgets/media_grid_card.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/media_poster.dart"
+    ],
+    "lib/app/widgets/media_list_tile.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/media_poster.dart"
+    ],
+    "lib/app/widgets/media_poster.dart": [],
+    "lib/app/widgets/offline_banner.dart": [
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/core/bootstrap/app_bootstrap.dart": [
+      "lib/app/core/constants/api_configuration.dart",
+      "lib/app/data/api/api_client.dart",
+      "lib/app/data/datasources/media_local_data_source.dart",
+      "lib/app/data/datasources/profile_local_data_source.dart",
+      "lib/app/data/datasources/remote/firebase_media_data_source.dart",
+      "lib/app/data/datasources/remote/google_books_remote_data_source.dart",
+      "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
+      "lib/app/data/repositories/firebase_auth_repository.dart",
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/data/services/firebase_auth_service.dart",
+      "lib/app/data/services/firebase_database_service.dart",
+      "lib/app/data/services/local_database_factory.dart",
+      "lib/app/data/services/network_info_service.dart",
+      "lib/app/data/services/sembast_local_storage_service.dart",
+      "lib/app/modules/authentication/domain/auth_use_cases.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/theme_controller.dart"
+    ],
+    "lib/core/widgets/feature_placeholder.dart": [],
+    "lib/features/home/home_page.dart": [
+      "lib/app/app_router.dart",
+      "lib/app/modules/navigation/bloc/navigation_bloc.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/core/widgets/feature_placeholder.dart"
+    ],
+    "lib/features/settings/settings_page.dart": [
+      "lib/app/theme_controller.dart",
+      "lib/app/widgets/app_text.dart"
+    ],
+    "lib/main.dart": [
+      "lib/app/app.dart",
+      "lib/app/core/constants/firebase_options.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "test/api_foundation_test.dart": [
+      "lib/app/data/api/api_client.dart",
+      "lib/app/data/api/api_exception.dart",
+      "lib/app/data/datasources/remote/google_books_remote_data_source.dart",
+      "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "lib/app/modules/media/domain/media_type.dart"
+    ],
+    "test/app_scaffold_test.dart": [
+      "lib/app/app.dart",
+      "lib/app/theme_controller.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "test/auth_flow_test.dart": [
+      "lib/app/app.dart",
+      "lib/app/modules/authentication/domain/auth_repository.dart",
+      "lib/app/modules/authentication/domain/auth_use_cases.dart",
+      "lib/app/theme_controller.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "test/local_storage_test.dart": [
+      "lib/app/data/datasources/media_local_data_source.dart",
+      "lib/app/data/datasources/profile_local_data_source.dart",
+      "lib/app/data/services/sembast_local_storage_service.dart",
+      "lib/app/theme_controller.dart"
+    ],
+    "test/media_blocs_test.dart": [
+      "lib/app/data/datasources/profile_local_data_source.dart",
+      "lib/app/data/services/local_storage_service.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/authentication/domain/auth_repository.dart",
+      "lib/app/modules/authentication/domain/auth_use_cases.dart",
+      "lib/app/modules/home/bloc/home_bloc.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/search/bloc/search_bloc.dart",
+      "lib/app/modules/settings/bloc/settings_bloc.dart",
+      "lib/app/theme_controller.dart"
+    ],
+    "test/media_domain_test.dart": [
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/profile/domain/profile_entity.dart"
+    ],
+    "test/media_repository_test.dart": [
+      "lib/app/data/datasources/media_local_data_source.dart",
+      "lib/app/data/datasources/remote/firebase_media_data_source.dart",
+      "lib/app/data/models/media_record.dart",
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/data/services/local_storage_service.dart",
+      "lib/app/data/services/network_info_service.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_offline_exception.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart"
+    ],
+    "test/media_ui_flow_test.dart": [
+      "lib/app/app.dart",
+      "lib/app/data/datasources/profile_local_data_source.dart",
+      "lib/app/modules/authentication/domain/auth_repository.dart",
+      "lib/app/modules/authentication/domain/auth_use_cases.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_type.dart",
+      "lib/app/theme_controller.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/media_details_content.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/media_domain_test.dart",
+      "test/media_repository_test.dart"
+    ]
+  },
+  "consumers": {
+    "lib/core/bootstrap/app_bootstrap.dart": [
+      "lib/app/app.dart",
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/authentication/auth_gate.dart",
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "lib/app/modules/search/pages/search_page.dart",
+      "lib/main.dart",
+      "test/app_scaffold_test.dart",
+      "test/auth_flow_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/features/home/home_page.dart": [
+      "lib/app/app.dart",
+      "lib/app/modules/authentication/auth_gate.dart"
+    ],
+    "lib/app/modules/authentication/bloc/auth_bloc.dart": [
+      "lib/app/app.dart",
+      "lib/app/modules/authentication/auth_gate.dart",
+      "lib/app/modules/authentication/pages/otp_page.dart",
+      "lib/app/modules/authentication/pages/phone_page.dart",
+      "lib/app/modules/authentication/pages/profile_setup_page.dart",
+      "lib/app/modules/authentication/pages/welcome_page.dart",
+      "lib/app/modules/home/pages/home_shell_page.dart"
+    ],
+    "lib/app/modules/authentication/auth_gate.dart": [
+      "lib/app/app.dart"
+    ],
+    "lib/app/modules/connectivity/bloc/connectivity_bloc.dart": [
+      "lib/app/app.dart",
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/search/pages/search_page.dart"
+    ],
+    "lib/app/app_router.dart": [
+      "lib/app/app.dart",
+      "lib/features/home/home_page.dart"
+    ],
+    "lib/app/app_theme.dart": [
+      "lib/app/app.dart"
+    ],
+    "lib/app/theme_controller.dart": [
+      "lib/app/app.dart",
+      "lib/app/app_router.dart",
+      "lib/app/modules/settings/bloc/settings_bloc.dart",
+      "lib/app/modules/settings/pages/settings_page.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "lib/features/settings/settings_page.dart",
+      "test/app_scaffold_test.dart",
+      "test/auth_flow_test.dart",
+      "test/local_storage_test.dart",
+      "test/media_blocs_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/modules/settings/pages/settings_page.dart": [
+      "lib/app/app_router.dart"
+    ],
+    "lib/app/widgets/app_text.dart": [
+      "lib/app/app_router.dart",
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/authentication/pages/otp_page.dart",
+      "lib/app/modules/authentication/pages/phone_page.dart",
+      "lib/app/modules/authentication/pages/profile_setup_page.dart",
+      "lib/app/modules/authentication/pages/welcome_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "lib/app/modules/search/pages/search_page.dart",
+      "lib/app/modules/settings/pages/settings_page.dart",
+      "lib/app/widgets/app_section_header.dart",
+      "lib/app/widgets/content_state.dart",
+      "lib/app/widgets/media_candidate_tile.dart",
+      "lib/app/widgets/media_details_content.dart",
+      "lib/app/widgets/media_editor_fields.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/app/widgets/media_list_tile.dart",
+      "lib/app/widgets/offline_banner.dart",
+      "lib/features/home/home_page.dart",
+      "lib/features/settings/settings_page.dart",
+      "lib/main.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/modules/media/domain/media_status.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/data/models/media_record.dart",
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/home/bloc/home_bloc.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart",
+      "lib/app/widgets/media_editor_fields.dart",
+      "test/media_blocs_test.dart",
+      "test/media_domain_test.dart",
+      "test/media_repository_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/modules/media/domain/media_type.dart": [
+      "lib/app/core/constants/media_labels.dart",
+      "lib/app/data/models/media_record.dart",
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/home/bloc/home_bloc.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/media/domain/media_entity.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_status.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/search/bloc/search_bloc.dart",
+      "lib/app/modules/search/pages/search_page.dart",
+      "lib/app/widgets/media_details_content.dart",
+      "lib/app/widgets/media_editor_fields.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "test/api_foundation_test.dart",
+      "test/media_blocs_test.dart",
+      "test/media_domain_test.dart",
+      "test/media_repository_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/data/api/api_exception.dart": [
+      "lib/app/data/api/api_client.dart",
+      "lib/app/data/api/api_response.dart",
+      "lib/app/data/datasources/remote/google_books_remote_data_source.dart",
+      "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "test/api_foundation_test.dart"
+    ],
+    "lib/app/data/api/api_response.dart": [
+      "lib/app/data/api/api_client.dart"
+    ],
+    "lib/app/data/services/local_storage_service.dart": [
+      "lib/app/data/datasources/media_local_data_source.dart",
+      "lib/app/data/datasources/profile_local_data_source.dart",
+      "lib/app/data/services/sembast_local_storage_service.dart",
+      "test/media_blocs_test.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/data/services/firebase_database_service.dart": [
+      "lib/app/data/datasources/remote/firebase_media_data_source.dart",
+      "lib/app/data/repositories/firebase_auth_repository.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/data/api/api_client.dart": [
+      "lib/app/data/datasources/remote/google_books_remote_data_source.dart",
+      "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/api_foundation_test.dart"
+    ],
+    "lib/app/modules/media/domain/media_candidate.dart": [
+      "lib/app/data/models/media_record.dart",
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/home/bloc/trending_bloc.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/media/domain/trending_repository.dart",
+      "lib/app/modules/search/bloc/candidate_details_bloc.dart",
+      "lib/app/modules/search/bloc/search_bloc.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "lib/app/widgets/media_candidate_tile.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "test/media_blocs_test.dart",
+      "test/media_domain_test.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/modules/media/domain/media_entity.dart": [
+      "lib/app/data/models/media_record.dart",
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/home/bloc/home_bloc.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/media/domain/media_repository.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/app/widgets/media_list_tile.dart",
+      "test/media_blocs_test.dart",
+      "test/media_domain_test.dart",
+      "test/media_repository_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/modules/authentication/domain/auth_repository.dart": [
+      "lib/app/data/repositories/firebase_auth_repository.dart",
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/modules/authentication/domain/auth_use_cases.dart",
+      "test/auth_flow_test.dart",
+      "test/media_blocs_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/data/datasources/profile_local_data_source.dart": [
+      "lib/app/data/repositories/firebase_auth_repository.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/local_storage_test.dart",
+      "test/media_blocs_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/data/services/firebase_auth_service.dart": [
+      "lib/app/data/repositories/firebase_auth_repository.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/media/domain/media_offline_exception.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/modules/media/domain/media_repository.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/modules/media/domain/media_use_cases.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/media_blocs_test.dart",
+      "test/media_domain_test.dart"
+    ],
+    "lib/app/modules/media/domain/media_use_cases.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart",
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/home/bloc/home_bloc.dart",
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/search/bloc/candidate_details_bloc.dart",
+      "lib/app/modules/search/bloc/search_bloc.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "test/media_blocs_test.dart",
+      "test/media_domain_test.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/data/datasources/media_local_data_source.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/local_storage_test.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/data/datasources/remote/firebase_media_data_source.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/data/datasources/remote/google_books_remote_data_source.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/api_foundation_test.dart"
+    ],
+    "lib/app/data/datasources/remote/tmdb_remote_data_source.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/api_foundation_test.dart"
+    ],
+    "lib/app/data/models/media_record.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/data/services/network_info_service.dart": [
+      "lib/app/data/repositories/media_repository_impl.dart",
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/app/modules/media/domain/trending_repository.dart": [
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "lib/app/modules/home/bloc/trending_bloc.dart"
+    ],
+    "lib/app/data/services/local_database_factory_io.dart": [
+      "lib/app/data/services/local_database_factory.dart"
+    ],
+    "lib/app/modules/add_media/bloc/add_media_event.dart": [
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart"
+    ],
+    "lib/app/modules/add_media/bloc/add_media_state.dart": [
+      "lib/app/modules/add_media/bloc/add_media_bloc.dart"
+    ],
+    "lib/app/widgets/loading_skeleton_list.dart": [
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
+      "lib/app/modules/search/pages/search_page.dart"
+    ],
+    "lib/app/widgets/media_editor_fields.dart": [
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart"
+    ],
+    "lib/app/widgets/media_poster.dart": [
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/widgets/media_candidate_tile.dart",
+      "lib/app/widgets/media_details_content.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/app/widgets/media_list_tile.dart"
+    ],
+    "lib/app/core/constants/media_labels.dart": [
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/widgets/media_candidate_tile.dart",
+      "lib/app/widgets/media_details_content.dart",
+      "lib/app/widgets/media_editor_fields.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/app/widgets/media_list_tile.dart"
+    ],
+    "lib/app/modules/add_media/bloc/add_media_bloc.dart": [
+      "lib/app/modules/add_media/pages/add_media_page.dart",
+      "test/media_blocs_test.dart"
+    ],
+    "lib/app/modules/home/pages/home_shell_page.dart": [
+      "lib/app/modules/authentication/auth_gate.dart"
+    ],
+    "lib/app/modules/authentication/pages/phone_page.dart": [
+      "lib/app/modules/authentication/auth_gate.dart"
+    ],
+    "lib/app/modules/authentication/pages/otp_page.dart": [
+      "lib/app/modules/authentication/auth_gate.dart"
+    ],
+    "lib/app/modules/authentication/pages/profile_setup_page.dart": [
+      "lib/app/modules/authentication/auth_gate.dart"
+    ],
+    "lib/app/modules/authentication/pages/welcome_page.dart": [
+      "lib/app/modules/authentication/auth_gate.dart"
+    ],
+    "lib/app/modules/authentication/domain/auth_use_cases.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart",
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/auth_flow_test.dart",
+      "test/media_blocs_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/modules/authentication/bloc/auth_event.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart"
+    ],
+    "lib/app/modules/authentication/bloc/auth_state.dart": [
+      "lib/app/modules/authentication/bloc/auth_bloc.dart"
+    ],
+    "lib/app/modules/connectivity/bloc/connectivity_event.dart": [
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart"
+    ],
+    "lib/app/modules/connectivity/bloc/connectivity_state.dart": [
+      "lib/app/modules/connectivity/bloc/connectivity_bloc.dart"
+    ],
+    "lib/app/modules/home/bloc/home_event.dart": [
+      "lib/app/modules/home/bloc/home_bloc.dart"
+    ],
+    "lib/app/modules/home/bloc/home_state.dart": [
+      "lib/app/modules/home/bloc/home_bloc.dart"
+    ],
+    "lib/app/data/repositories/tmdb_trending_repository.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "test/api_foundation_test.dart"
+    ],
+    "lib/app/widgets/offline_banner.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart"
+    ],
+    "lib/app/modules/library/bloc/library_bloc.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "test/media_blocs_test.dart"
+    ],
+    "lib/app/modules/library/pages/library_page.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart"
+    ],
+    "lib/app/modules/navigation/bloc/navigation_bloc.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
+      "lib/features/home/home_page.dart"
+    ],
+    "lib/app/modules/profile/bloc/profile_bloc.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
+      "test/media_blocs_test.dart"
+    ],
+    "lib/app/modules/profile/pages/profile_page.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart"
+    ],
+    "lib/app/modules/search/bloc/search_bloc.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/search/pages/search_page.dart",
+      "test/media_blocs_test.dart"
+    ],
+    "lib/app/modules/search/pages/search_page.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart"
+    ],
+    "lib/app/modules/home/bloc/home_bloc.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart",
+      "test/media_blocs_test.dart"
+    ],
+    "lib/app/modules/home/bloc/trending_bloc.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/home/pages/home_tab.dart"
+    ],
+    "lib/app/modules/home/pages/home_tab.dart": [
+      "lib/app/modules/home/pages/home_shell_page.dart"
+    ],
+    "lib/app/widgets/app_section_header.dart": [
+      "lib/app/modules/home/pages/home_tab.dart"
+    ],
+    "lib/app/widgets/content_state.dart": [
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
+      "lib/app/modules/search/pages/search_page.dart"
+    ],
+    "lib/app/widgets/media_grid_card.dart": [
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/modules/media_details/pages/media_details_page.dart": [
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/library/pages/library_page.dart"
+    ],
+    "lib/app/modules/search/pages/candidate_details_page.dart": [
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/search/pages/search_page.dart"
+    ],
+    "lib/app/modules/library/bloc/library_event.dart": [
+      "lib/app/modules/library/bloc/library_bloc.dart"
+    ],
+    "lib/app/modules/library/bloc/library_state.dart": [
+      "lib/app/modules/library/bloc/library_bloc.dart"
+    ],
+    "lib/app/widgets/loading_skeleton_grid.dart": [
+      "lib/app/modules/library/pages/library_page.dart"
+    ],
+    "lib/app/widgets/media_list_tile.dart": [
+      "lib/app/modules/library/pages/library_page.dart"
+    ],
+    "lib/app/modules/media_details/bloc/media_details_event.dart": [
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart"
+    ],
+    "lib/app/modules/media_details/bloc/media_details_state.dart": [
+      "lib/app/modules/media_details/bloc/media_details_bloc.dart"
+    ],
+    "lib/app/widgets/media_details_content.dart": [
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/modules/media_details/bloc/media_details_bloc.dart": [
+      "lib/app/modules/media_details/pages/media_details_page.dart",
+      "test/media_blocs_test.dart"
+    ],
+    "lib/app/modules/navigation/bloc/navigation_event.dart": [
+      "lib/app/modules/navigation/bloc/navigation_bloc.dart"
+    ],
+    "lib/app/modules/navigation/bloc/navigation_state.dart": [
+      "lib/app/modules/navigation/bloc/navigation_bloc.dart"
+    ],
+    "lib/app/modules/profile/domain/profile_entity.dart": [
+      "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "test/media_domain_test.dart"
+    ],
+    "lib/app/modules/profile/bloc/profile_event.dart": [
+      "lib/app/modules/profile/bloc/profile_bloc.dart"
+    ],
+    "lib/app/modules/profile/bloc/profile_state.dart": [
+      "lib/app/modules/profile/bloc/profile_bloc.dart"
+    ],
+    "lib/app/modules/search/bloc/search_event.dart": [
+      "lib/app/modules/search/bloc/search_bloc.dart"
+    ],
+    "lib/app/modules/search/bloc/search_state.dart": [
+      "lib/app/modules/search/bloc/search_bloc.dart"
+    ],
+    "lib/app/modules/add_media/pages/add_media_page.dart": [
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "lib/app/modules/search/pages/search_page.dart"
+    ],
+    "lib/app/modules/search/bloc/candidate_details_bloc.dart": [
+      "lib/app/modules/search/pages/candidate_details_page.dart"
+    ],
+    "lib/app/widgets/media_candidate_tile.dart": [
+      "lib/app/modules/search/pages/search_page.dart"
+    ],
+    "lib/app/modules/settings/bloc/settings_event.dart": [
+      "lib/app/modules/settings/bloc/settings_bloc.dart"
+    ],
+    "lib/app/modules/settings/bloc/settings_state.dart": [
+      "lib/app/modules/settings/bloc/settings_bloc.dart"
+    ],
+    "lib/app/modules/settings/bloc/settings_bloc.dart": [
+      "lib/app/modules/settings/pages/settings_page.dart",
+      "test/media_blocs_test.dart"
+    ],
+    "lib/app/core/constants/api_configuration.dart": [
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/data/services/local_database_factory.dart": [
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/data/services/sembast_local_storage_service.dart": [
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/local_storage_test.dart"
+    ],
+    "lib/app/data/repositories/firebase_auth_repository.dart": [
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/data/repositories/media_repository_impl.dart": [
+      "lib/core/bootstrap/app_bootstrap.dart",
+      "test/media_repository_test.dart"
+    ],
+    "lib/core/widgets/feature_placeholder.dart": [
+      "lib/features/home/home_page.dart"
+    ],
+    "lib/app/app.dart": [
+      "lib/main.dart",
+      "test/app_scaffold_test.dart",
+      "test/auth_flow_test.dart",
+      "test/media_ui_flow_test.dart"
+    ],
+    "lib/app/core/constants/firebase_options.dart": [
+      "lib/main.dart"
+    ],
+    "test/media_domain_test.dart": [
+      "test/media_ui_flow_test.dart"
+    ],
+    "test/media_repository_test.dart": [
+      "test/media_ui_flow_test.dart"
+    ]
+  }
+}

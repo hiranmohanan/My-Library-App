@@ -1,0 +1,460 @@
+graph LR
+  n0["lib/app/app.dart"]
+  n1["lib/app/app_router.dart"]
+  n2["lib/app/app_theme.dart"]
+  n3["lib/app/core/constants/api_configuration.dart"]
+  n4["lib/app/core/constants/firebase_options.dart"]
+  n5["lib/app/core/constants/media_labels.dart"]
+  n6["lib/app/data/api/api_client.dart"]
+  n7["lib/app/data/api/api_exception.dart"]
+  n8["lib/app/data/api/api_response.dart"]
+  n9["lib/app/data/datasources/media_local_data_source.dart"]
+  n10["lib/app/data/datasources/profile_local_data_source.dart"]
+  n11["lib/app/data/datasources/remote/firebase_media_data_source.dart"]
+  n12["lib/app/data/datasources/remote/google_books_remote_data_source.dart"]
+  n13["lib/app/data/datasources/remote/tmdb_remote_data_source.dart"]
+  n14["lib/app/data/models/media_record.dart"]
+  n15["lib/app/data/repositories/firebase_auth_repository.dart"]
+  n16["lib/app/data/repositories/media_repository_impl.dart"]
+  n17["lib/app/data/repositories/tmdb_trending_repository.dart"]
+  n18["lib/app/data/services/firebase_auth_service.dart"]
+  n19["lib/app/data/services/firebase_database_service.dart"]
+  n20["lib/app/data/services/firebase_storage_service.dart"]
+  n21["lib/app/data/services/local_database_factory.dart"]
+  n22["lib/app/data/services/local_database_factory_io.dart"]
+  n23["lib/app/data/services/local_database_factory_web.dart"]
+  n24["lib/app/data/services/local_storage_service.dart"]
+  n25["lib/app/data/services/network_info_service.dart"]
+  n26["lib/app/data/services/sembast_local_storage_service.dart"]
+  n27["lib/app/modules/add_media/bloc/add_media_bloc.dart"]
+  n28["lib/app/modules/add_media/bloc/add_media_event.dart"]
+  n29["lib/app/modules/add_media/bloc/add_media_state.dart"]
+  n30["lib/app/modules/add_media/pages/add_media_page.dart"]
+  n31["lib/app/modules/authentication/auth_gate.dart"]
+  n32["lib/app/modules/authentication/bloc/auth_bloc.dart"]
+  n33["lib/app/modules/authentication/bloc/auth_event.dart"]
+  n34["lib/app/modules/authentication/bloc/auth_state.dart"]
+  n35["lib/app/modules/authentication/domain/auth_repository.dart"]
+  n36["lib/app/modules/authentication/domain/auth_use_cases.dart"]
+  n37["lib/app/modules/authentication/pages/otp_page.dart"]
+  n38["lib/app/modules/authentication/pages/phone_page.dart"]
+  n39["lib/app/modules/authentication/pages/profile_setup_page.dart"]
+  n40["lib/app/modules/authentication/pages/welcome_page.dart"]
+  n41["lib/app/modules/connectivity/bloc/connectivity_bloc.dart"]
+  n42["lib/app/modules/connectivity/bloc/connectivity_event.dart"]
+  n43["lib/app/modules/connectivity/bloc/connectivity_state.dart"]
+  n44["lib/app/modules/home/bloc/home_bloc.dart"]
+  n45["lib/app/modules/home/bloc/home_event.dart"]
+  n46["lib/app/modules/home/bloc/home_state.dart"]
+  n47["lib/app/modules/home/bloc/trending_bloc.dart"]
+  n48["lib/app/modules/home/pages/home_shell_page.dart"]
+  n49["lib/app/modules/home/pages/home_tab.dart"]
+  n50["lib/app/modules/library/bloc/library_bloc.dart"]
+  n51["lib/app/modules/library/bloc/library_event.dart"]
+  n52["lib/app/modules/library/bloc/library_state.dart"]
+  n53["lib/app/modules/library/pages/library_page.dart"]
+  n54["lib/app/modules/media/domain/media_candidate.dart"]
+  n55["lib/app/modules/media/domain/media_entity.dart"]
+  n56["lib/app/modules/media/domain/media_offline_exception.dart"]
+  n57["lib/app/modules/media/domain/media_repository.dart"]
+  n58["lib/app/modules/media/domain/media_status.dart"]
+  n59["lib/app/modules/media/domain/media_type.dart"]
+  n60["lib/app/modules/media/domain/media_use_cases.dart"]
+  n61["lib/app/modules/media/domain/trending_repository.dart"]
+  n62["lib/app/modules/media_details/bloc/media_details_bloc.dart"]
+  n63["lib/app/modules/media_details/bloc/media_details_event.dart"]
+  n64["lib/app/modules/media_details/bloc/media_details_state.dart"]
+  n65["lib/app/modules/media_details/pages/media_details_page.dart"]
+  n66["lib/app/modules/navigation/bloc/navigation_bloc.dart"]
+  n67["lib/app/modules/navigation/bloc/navigation_event.dart"]
+  n68["lib/app/modules/navigation/bloc/navigation_state.dart"]
+  n69["lib/app/modules/profile/bloc/profile_bloc.dart"]
+  n70["lib/app/modules/profile/bloc/profile_event.dart"]
+  n71["lib/app/modules/profile/bloc/profile_state.dart"]
+  n72["lib/app/modules/profile/domain/profile_entity.dart"]
+  n73["lib/app/modules/profile/pages/profile_page.dart"]
+  n74["lib/app/modules/search/bloc/candidate_details_bloc.dart"]
+  n75["lib/app/modules/search/bloc/search_bloc.dart"]
+  n76["lib/app/modules/search/bloc/search_event.dart"]
+  n77["lib/app/modules/search/bloc/search_state.dart"]
+  n78["lib/app/modules/search/pages/candidate_details_page.dart"]
+  n79["lib/app/modules/search/pages/search_page.dart"]
+  n80["lib/app/modules/settings/bloc/settings_bloc.dart"]
+  n81["lib/app/modules/settings/bloc/settings_event.dart"]
+  n82["lib/app/modules/settings/bloc/settings_state.dart"]
+  n83["lib/app/modules/settings/pages/settings_page.dart"]
+  n84["lib/app/theme_controller.dart"]
+  n85["lib/app/widgets/app_section_header.dart"]
+  n86["lib/app/widgets/app_text.dart"]
+  n87["lib/app/widgets/content_state.dart"]
+  n88["lib/app/widgets/loading_skeleton_grid.dart"]
+  n89["lib/app/widgets/loading_skeleton_list.dart"]
+  n90["lib/app/widgets/media_candidate_tile.dart"]
+  n91["lib/app/widgets/media_details_content.dart"]
+  n92["lib/app/widgets/media_editor_fields.dart"]
+  n93["lib/app/widgets/media_grid_card.dart"]
+  n94["lib/app/widgets/media_list_tile.dart"]
+  n95["lib/app/widgets/media_poster.dart"]
+  n96["lib/app/widgets/offline_banner.dart"]
+  n97["lib/core/bootstrap/app_bootstrap.dart"]
+  n98["lib/core/widgets/feature_placeholder.dart"]
+  n99["lib/features/home/home_page.dart"]
+  n100["lib/features/settings/settings_page.dart"]
+  n101["lib/main.dart"]
+  n102["test/api_foundation_test.dart"]
+  n103["test/app_scaffold_test.dart"]
+  n104["test/auth_flow_test.dart"]
+  n105["test/local_storage_test.dart"]
+  n106["test/media_blocs_test.dart"]
+  n107["test/media_domain_test.dart"]
+  n108["test/media_repository_test.dart"]
+  n109["test/media_ui_flow_test.dart"]
+  n0 --> n1
+  n0 --> n2
+  n0 --> n31
+  n0 --> n32
+  n0 --> n41
+  n0 --> n84
+  n0 --> n97
+  n0 --> n99
+  n1 --> n83
+  n1 --> n84
+  n1 --> n86
+  n5 --> n58
+  n5 --> n59
+  n6 --> n7
+  n6 --> n8
+  n8 --> n7
+  n9 --> n24
+  n10 --> n24
+  n11 --> n19
+  n12 --> n6
+  n12 --> n7
+  n13 --> n6
+  n13 --> n7
+  n14 --> n54
+  n14 --> n55
+  n14 --> n58
+  n14 --> n59
+  n15 --> n10
+  n15 --> n18
+  n15 --> n19
+  n15 --> n35
+  n16 --> n7
+  n16 --> n9
+  n16 --> n11
+  n16 --> n12
+  n16 --> n13
+  n16 --> n14
+  n16 --> n25
+  n16 --> n54
+  n16 --> n55
+  n16 --> n56
+  n16 --> n57
+  n16 --> n58
+  n16 --> n59
+  n16 --> n60
+  n17 --> n13
+  n17 --> n14
+  n17 --> n54
+  n17 --> n59
+  n17 --> n61
+  n21 --> n22
+  n26 --> n24
+  n27 --> n28
+  n27 --> n29
+  n27 --> n54
+  n27 --> n55
+  n27 --> n56
+  n27 --> n58
+  n27 --> n59
+  n27 --> n60
+  n30 --> n5
+  n30 --> n27
+  n30 --> n41
+  n30 --> n54
+  n30 --> n60
+  n30 --> n86
+  n30 --> n89
+  n30 --> n92
+  n30 --> n95
+  n30 --> n97
+  n31 --> n32
+  n31 --> n37
+  n31 --> n38
+  n31 --> n39
+  n31 --> n40
+  n31 --> n48
+  n31 --> n97
+  n31 --> n99
+  n32 --> n33
+  n32 --> n34
+  n32 --> n35
+  n32 --> n36
+  n36 --> n35
+  n37 --> n32
+  n37 --> n86
+  n38 --> n32
+  n38 --> n86
+  n39 --> n32
+  n39 --> n86
+  n40 --> n32
+  n40 --> n86
+  n41 --> n25
+  n41 --> n42
+  n41 --> n43
+  n44 --> n45
+  n44 --> n46
+  n44 --> n55
+  n44 --> n58
+  n44 --> n59
+  n44 --> n60
+  n47 --> n54
+  n47 --> n61
+  n48 --> n17
+  n48 --> n32
+  n48 --> n41
+  n48 --> n44
+  n48 --> n47
+  n48 --> n49
+  n48 --> n50
+  n48 --> n53
+  n48 --> n60
+  n48 --> n66
+  n48 --> n69
+  n48 --> n73
+  n48 --> n75
+  n48 --> n79
+  n48 --> n96
+  n48 --> n97
+  n49 --> n5
+  n49 --> n44
+  n49 --> n47
+  n49 --> n50
+  n49 --> n54
+  n49 --> n55
+  n49 --> n59
+  n49 --> n65
+  n49 --> n66
+  n49 --> n69
+  n49 --> n78
+  n49 --> n85
+  n49 --> n86
+  n49 --> n87
+  n49 --> n89
+  n49 --> n93
+  n49 --> n97
+  n50 --> n51
+  n50 --> n52
+  n50 --> n55
+  n50 --> n58
+  n50 --> n59
+  n50 --> n60
+  n53 --> n5
+  n53 --> n50
+  n53 --> n58
+  n53 --> n59
+  n53 --> n65
+  n53 --> n66
+  n53 --> n86
+  n53 --> n87
+  n53 --> n88
+  n53 --> n89
+  n53 --> n93
+  n53 --> n94
+  n53 --> n97
+  n54 --> n59
+  n55 --> n58
+  n55 --> n59
+  n57 --> n54
+  n57 --> n55
+  n57 --> n58
+  n57 --> n59
+  n58 --> n59
+  n60 --> n54
+  n60 --> n55
+  n60 --> n57
+  n60 --> n58
+  n60 --> n59
+  n61 --> n54
+  n62 --> n55
+  n62 --> n56
+  n62 --> n58
+  n62 --> n60
+  n62 --> n63
+  n62 --> n64
+  n65 --> n41
+  n65 --> n55
+  n65 --> n60
+  n65 --> n62
+  n65 --> n86
+  n65 --> n87
+  n65 --> n89
+  n65 --> n91
+  n65 --> n92
+  n65 --> n97
+  n66 --> n67
+  n66 --> n68
+  n69 --> n10
+  n69 --> n36
+  n69 --> n59
+  n69 --> n60
+  n69 --> n70
+  n69 --> n71
+  n69 --> n72
+  n73 --> n66
+  n73 --> n69
+  n73 --> n86
+  n73 --> n87
+  n73 --> n89
+  n74 --> n54
+  n74 --> n60
+  n75 --> n54
+  n75 --> n59
+  n75 --> n60
+  n75 --> n76
+  n75 --> n77
+  n78 --> n30
+  n78 --> n54
+  n78 --> n60
+  n78 --> n74
+  n78 --> n86
+  n78 --> n91
+  n78 --> n97
+  n79 --> n30
+  n79 --> n41
+  n79 --> n59
+  n79 --> n75
+  n79 --> n78
+  n79 --> n86
+  n79 --> n87
+  n79 --> n89
+  n79 --> n90
+  n79 --> n97
+  n80 --> n81
+  n80 --> n82
+  n80 --> n84
+  n83 --> n80
+  n83 --> n84
+  n83 --> n86
+  n85 --> n86
+  n87 --> n86
+  n90 --> n5
+  n90 --> n54
+  n90 --> n86
+  n90 --> n95
+  n91 --> n5
+  n91 --> n59
+  n91 --> n86
+  n91 --> n95
+  n92 --> n5
+  n92 --> n58
+  n92 --> n59
+  n92 --> n86
+  n93 --> n5
+  n93 --> n54
+  n93 --> n55
+  n93 --> n59
+  n93 --> n86
+  n93 --> n95
+  n94 --> n5
+  n94 --> n55
+  n94 --> n86
+  n94 --> n95
+  n96 --> n86
+  n97 --> n3
+  n97 --> n6
+  n97 --> n9
+  n97 --> n10
+  n97 --> n11
+  n97 --> n12
+  n97 --> n13
+  n97 --> n15
+  n97 --> n16
+  n97 --> n18
+  n97 --> n19
+  n97 --> n21
+  n97 --> n25
+  n97 --> n26
+  n97 --> n36
+  n97 --> n57
+  n97 --> n84
+  n99 --> n1
+  n99 --> n66
+  n99 --> n86
+  n99 --> n98
+  n100 --> n84
+  n100 --> n86
+  n101 --> n0
+  n101 --> n4
+  n101 --> n86
+  n101 --> n97
+  n102 --> n6
+  n102 --> n7
+  n102 --> n12
+  n102 --> n13
+  n102 --> n17
+  n102 --> n59
+  n103 --> n0
+  n103 --> n84
+  n103 --> n97
+  n104 --> n0
+  n104 --> n35
+  n104 --> n36
+  n104 --> n84
+  n104 --> n97
+  n105 --> n9
+  n105 --> n10
+  n105 --> n26
+  n105 --> n84
+  n106 --> n10
+  n106 --> n24
+  n106 --> n27
+  n106 --> n35
+  n106 --> n36
+  n106 --> n44
+  n106 --> n50
+  n106 --> n54
+  n106 --> n55
+  n106 --> n57
+  n106 --> n58
+  n106 --> n59
+  n106 --> n60
+  n106 --> n62
+  n106 --> n69
+  n106 --> n75
+  n106 --> n80
+  n106 --> n84
+  n107 --> n54
+  n107 --> n55
+  n107 --> n57
+  n107 --> n58
+  n107 --> n59
+  n107 --> n60
+  n107 --> n72
+  n108 --> n9
+  n108 --> n11
+  n108 --> n14
+  n108 --> n16
+  n108 --> n24
+  n108 --> n25
+  n108 --> n54
+  n108 --> n55
+  n108 --> n56
+  n108 --> n58
+  n108 --> n59
+  n108 --> n60
+  n109 --> n0
+  n109 --> n10
+  n109 --> n35
+  n109 --> n36
+  n109 --> n55
+  n109 --> n58
+  n109 --> n59
+  n109 --> n84
+  n109 --> n86
+  n109 --> n91
+  n109 --> n93
+  n109 --> n97
+  n109 --> n107
+  n109 --> n108
