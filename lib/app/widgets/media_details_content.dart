@@ -209,7 +209,7 @@ class MediaDetailsContent extends StatelessWidget {
                         ? description!
                         : 'No description available.',
                     style: theme.textTheme.bodyMedium,
-                    maxLines: expanded ? null : 4,
+                    maxLines: expanded ? null : 3,
                   ),
                   if ((description?.trim().length ?? 0) > 120)
                     TextButton(

@@ -50,6 +50,7 @@
     "lib/app/modules/home/bloc/trending_bloc.dart",
     "lib/app/modules/home/pages/home_shell_page.dart",
     "lib/app/modules/home/pages/home_tab.dart",
+    "lib/app/modules/home/pages/trending_all_page.dart",
     "lib/app/modules/library/bloc/library_bloc.dart",
     "lib/app/modules/library/bloc/library_event.dart",
     "lib/app/modules/library/bloc/library_state.dart",
@@ -190,7 +191,6 @@
     "lib/app/data/repositories/tmdb_trending_repository.dart": [
       "lib/app/data/datasources/remote/tmdb_remote_data_source.dart",
       "lib/app/data/models/media_record.dart",
-      "lib/app/modules/media/domain/media_candidate.dart",
       "lib/app/modules/media/domain/media_type.dart",
       "lib/app/modules/media/domain/trending_repository.dart"
     ],
@@ -312,6 +312,7 @@
       "lib/app/core/constants/media_labels.dart",
       "lib/app/modules/home/bloc/home_bloc.dart",
       "lib/app/modules/home/bloc/trending_bloc.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "lib/app/modules/library/bloc/library_bloc.dart",
       "lib/app/modules/media/domain/media_candidate.dart",
       "lib/app/modules/media/domain/media_entity.dart",
@@ -324,6 +325,16 @@
       "lib/app/widgets/app_text.dart",
       "lib/app/widgets/content_state.dart",
       "lib/app/widgets/loading_skeleton_list.dart",
+      "lib/app/widgets/media_grid_card.dart",
+      "lib/core/bootstrap/app_bootstrap.dart"
+    ],
+    "lib/app/modules/home/pages/trending_all_page.dart": [
+      "lib/app/data/repositories/tmdb_trending_repository.dart",
+      "lib/app/modules/home/bloc/trending_bloc.dart",
+      "lib/app/modules/media/domain/media_candidate.dart",
+      "lib/app/modules/search/pages/candidate_details_page.dart",
+      "lib/app/widgets/app_text.dart",
+      "lib/app/widgets/content_state.dart",
       "lib/app/widgets/media_grid_card.dart",
       "lib/core/bootstrap/app_bootstrap.dart"
     ],
@@ -421,11 +432,13 @@
     "lib/app/modules/profile/bloc/profile_state.dart": [],
     "lib/app/modules/profile/domain/profile_entity.dart": [],
     "lib/app/modules/profile/pages/profile_page.dart": [
+      "lib/app/modules/library/bloc/library_bloc.dart",
+      "lib/app/modules/media/domain/media_type.dart",
       "lib/app/modules/navigation/bloc/navigation_bloc.dart",
       "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/profile/domain/profile_entity.dart",
       "lib/app/widgets/app_text.dart",
-      "lib/app/widgets/content_state.dart",
-      "lib/app/widgets/loading_skeleton_list.dart"
+      "lib/app/widgets/content_state.dart"
     ],
     "lib/app/modules/search/bloc/candidate_details_bloc.dart": [
       "lib/app/modules/media/domain/media_candidate.dart",
@@ -648,6 +661,7 @@
       "lib/app/modules/authentication/auth_gate.dart",
       "lib/app/modules/home/pages/home_shell_page.dart",
       "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "lib/app/modules/library/pages/library_page.dart",
       "lib/app/modules/media_details/pages/media_details_page.dart",
       "lib/app/modules/search/pages/candidate_details_page.dart",
@@ -711,6 +725,7 @@
       "lib/app/modules/authentication/pages/profile_setup_page.dart",
       "lib/app/modules/authentication/pages/welcome_page.dart",
       "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "lib/app/modules/library/pages/library_page.dart",
       "lib/app/modules/media_details/pages/media_details_page.dart",
       "lib/app/modules/profile/pages/profile_page.dart",
@@ -764,6 +779,7 @@
       "lib/app/modules/media/domain/media_status.dart",
       "lib/app/modules/media/domain/media_use_cases.dart",
       "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
       "lib/app/modules/search/bloc/search_bloc.dart",
       "lib/app/modules/search/pages/search_page.dart",
       "lib/app/widgets/media_details_content.dart",
@@ -807,11 +823,11 @@
     "lib/app/modules/media/domain/media_candidate.dart": [
       "lib/app/data/models/media_record.dart",
       "lib/app/data/repositories/media_repository_impl.dart",
-      "lib/app/data/repositories/tmdb_trending_repository.dart",
       "lib/app/modules/add_media/bloc/add_media_bloc.dart",
       "lib/app/modules/add_media/pages/add_media_page.dart",
       "lib/app/modules/home/bloc/trending_bloc.dart",
       "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "lib/app/modules/media/domain/media_repository.dart",
       "lib/app/modules/media/domain/media_use_cases.dart",
       "lib/app/modules/media/domain/trending_repository.dart",
@@ -943,7 +959,6 @@
       "lib/app/modules/home/pages/home_tab.dart",
       "lib/app/modules/library/pages/library_page.dart",
       "lib/app/modules/media_details/pages/media_details_page.dart",
-      "lib/app/modules/profile/pages/profile_page.dart",
       "lib/app/modules/search/pages/search_page.dart"
     ],
     "lib/app/widgets/media_editor_fields.dart": [
@@ -1014,6 +1029,7 @@
     ],
     "lib/app/data/repositories/tmdb_trending_repository.dart": [
       "lib/app/modules/home/pages/home_shell_page.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "test/api_foundation_test.dart"
     ],
     "lib/app/widgets/offline_banner.dart": [
@@ -1023,6 +1039,7 @@
       "lib/app/modules/home/pages/home_shell_page.dart",
       "lib/app/modules/home/pages/home_tab.dart",
       "lib/app/modules/library/pages/library_page.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
       "test/media_blocs_test.dart"
     ],
     "lib/app/modules/library/pages/library_page.dart": [
@@ -1059,7 +1076,8 @@
     ],
     "lib/app/modules/home/bloc/trending_bloc.dart": [
       "lib/app/modules/home/pages/home_shell_page.dart",
-      "lib/app/modules/home/pages/home_tab.dart"
+      "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart"
     ],
     "lib/app/modules/home/pages/home_tab.dart": [
       "lib/app/modules/home/pages/home_shell_page.dart"
@@ -1069,6 +1087,7 @@
     ],
     "lib/app/widgets/content_state.dart": [
       "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "lib/app/modules/library/pages/library_page.dart",
       "lib/app/modules/media_details/pages/media_details_page.dart",
       "lib/app/modules/profile/pages/profile_page.dart",
@@ -1076,6 +1095,7 @@
     ],
     "lib/app/widgets/media_grid_card.dart": [
       "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "lib/app/modules/library/pages/library_page.dart",
       "test/media_ui_flow_test.dart"
     ],
@@ -1085,7 +1105,11 @@
     ],
     "lib/app/modules/search/pages/candidate_details_page.dart": [
       "lib/app/modules/home/pages/home_tab.dart",
+      "lib/app/modules/home/pages/trending_all_page.dart",
       "lib/app/modules/search/pages/search_page.dart"
+    ],
+    "lib/app/modules/home/pages/trending_all_page.dart": [
+      "lib/app/modules/home/pages/home_tab.dart"
     ],
     "lib/app/modules/library/bloc/library_event.dart": [
       "lib/app/modules/library/bloc/library_bloc.dart"
@@ -1122,6 +1146,7 @@
     ],
     "lib/app/modules/profile/domain/profile_entity.dart": [
       "lib/app/modules/profile/bloc/profile_bloc.dart",
+      "lib/app/modules/profile/pages/profile_page.dart",
       "test/media_domain_test.dart"
     ],
     "lib/app/modules/profile/bloc/profile_event.dart": [

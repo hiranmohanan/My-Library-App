@@ -124,11 +124,11 @@ void main() {
     final trending = TmdbTrendingRepository(
       TmdbRemoteDataSource(client, 'test-token'),
     );
-    final items = await trending.getTrending();
-    expect(items.map((item) => item.mediaType), [
+    final page = await trending.getTrending();
+    expect(page.items.map((item) => item.mediaType), [
       MediaType.movie,
       MediaType.series,
     ]);
-    expect(items.map((item) => item.title), ['Film', 'Series']);
+    expect(page.items.map((item) => item.title), ['Film', 'Series']);
   });
 }
