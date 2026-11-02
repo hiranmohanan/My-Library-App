@@ -49,6 +49,24 @@ abstract final class MediaRecord {
       throw const FormatException('Invalid TMDB media result.');
     }
     final posterPath = value['poster_path'];
+    final backdropPath = value['backdrop_path'];
+
+    // Genres: present as a list of maps in detail responses.
+    final rawGenres = value['genres'];
+    final genres = rawGenres is List
+        ? rawGenres
+              .whereType<Map>()
+              .map((g) => g['name'])
+              .whereType<String>()
+              .toList()
+        : null;
+
+    // origin_country may be a List<String>.
+    final rawCountry = value['origin_country'];
+    final originCountry = rawCountry is List
+        ? rawCountry.whereType<String>().toList()
+        : null;
+
     return MediaCandidate(
       mediaType: type,
       externalSource: ExternalSource.tmdb,
@@ -57,11 +75,32 @@ abstract final class MediaRecord {
       posterUrl: posterPath is String && posterPath.startsWith('/')
           ? 'https://image.tmdb.org/t/p/w500$posterPath'
           : null,
+      backdropUrl: backdropPath is String && backdropPath.startsWith('/')
+          ? 'https://image.tmdb.org/t/p/w780$backdropPath'
+          : null,
       description: value['overview'] as String?,
       language: value['original_language'] as String?,
+      originalTitle:
+          value[type == MediaType.movie ? 'original_title' : 'original_name']
+              as String?,
       releaseDate:
           value[type == MediaType.movie ? 'release_date' : 'first_air_date']
               as String?,
+      voteAverage: (value['vote_average'] as num?)?.toDouble(),
+      voteCount: (value['vote_count'] as num?)?.toInt(),
+      popularity: (value['popularity'] as num?)?.toDouble(),
+      genres: genres,
+      status: value['status'] as String?,
+      runtime: (value['runtime'] as num?)?.toInt(),
+      numberOfSeasons: (value['number_of_seasons'] as num?)?.toInt(),
+      numberOfEpisodes: (value['number_of_episodes'] as num?)?.toInt(),
+      tagline: value['tagline'] as String?,
+      homepage:
+          value['homepage'] is String &&
+              (value['homepage'] as String).isNotEmpty
+          ? value['homepage'] as String
+          : null,
+      originCountry: originCountry,
     );
   }
 

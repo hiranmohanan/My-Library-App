@@ -8,9 +8,22 @@ final class MediaCandidate {
     required this.externalId,
     required this.title,
     this.posterUrl,
+    this.backdropUrl,
     this.description,
     this.language,
+    this.originalTitle,
     this.releaseDate,
+    this.voteAverage,
+    this.voteCount,
+    this.popularity,
+    this.genres,
+    this.status,
+    this.runtime,
+    this.numberOfSeasons,
+    this.numberOfEpisodes,
+    this.tagline,
+    this.homepage,
+    this.originCountry,
   }) {
     if (externalSource != mediaType.externalSource) {
       throw ArgumentError('External source does not match media type.');
@@ -28,7 +41,42 @@ final class MediaCandidate {
   final String externalId;
   final String title;
   final String? posterUrl;
+  final String? backdropUrl;
   final String? description;
   final String? language;
+  final String? originalTitle;
   final String? releaseDate;
+
+  /// TMDB vote average (0–10).
+  final double? voteAverage;
+
+  /// TMDB vote count.
+  final int? voteCount;
+
+  /// TMDB popularity score.
+  final double? popularity;
+
+  /// Genre names (e.g. ['Action', 'Drama']).
+  final List<String>? genres;
+
+  /// Release / production status (e.g. 'Released', 'Ended').
+  final String? status;
+
+  /// Movie runtime in minutes.
+  final int? runtime;
+
+  /// Number of seasons (series only).
+  final int? numberOfSeasons;
+
+  /// Number of episodes (series only).
+  final int? numberOfEpisodes;
+
+  /// Tagline / short marketing text.
+  final String? tagline;
+
+  /// Official homepage URL.
+  final String? homepage;
+
+  /// Country codes of origin (e.g. ['US']).
+  final List<String>? originCountry;
 }

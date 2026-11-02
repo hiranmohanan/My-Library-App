@@ -18,6 +18,7 @@ import '../../navigation/bloc/navigation_bloc.dart';
 import '../../profile/bloc/profile_bloc.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/trending_bloc.dart';
+import 'trending_all_page.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({required this.dependencies, required this.userId, super.key});
@@ -122,8 +123,13 @@ class HomeTab extends StatelessWidget {
             AppSectionHeader(
               title: 'Trending Now',
               actionLabel: 'See All',
-              onAction: () => context.read<NavigationBloc>().add(
-                const NavigationSelected(2),
+              onAction: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => TrendingAllPage(
+                    dependencies: dependencies,
+                    userId: userId,
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 12),
@@ -148,6 +154,8 @@ class HomeTab extends StatelessWidget {
                 }
                 return _TrendingRow(
                   items: trending.items,
+                  hasMore: trending.hasMore,
+                  loadingMore: trending.loadingMore,
                   onOpen: (candidate) => Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       builder: (_) => CandidateDetailsPage(
@@ -212,26 +220,74 @@ class HomeTab extends StatelessWidget {
       );
 }
 
-class _TrendingRow extends StatelessWidget {
-  const _TrendingRow({required this.items, required this.onOpen});
+class _TrendingRow extends StatefulWidget {
+  const _TrendingRow({
+    required this.items,
+    required this.onOpen,
+    required this.hasMore,
+    required this.loadingMore,
+  });
 
   final List<MediaCandidate> items;
   final ValueChanged<MediaCandidate> onOpen;
+  final bool hasMore;
+  final bool loadingMore;
+
+  @override
+  State<_TrendingRow> createState() => _TrendingRowState();
+}
+
+class _TrendingRowState extends State<_TrendingRow> {
+  late final ScrollController _scroll;
+
+  @override
+  void initState() {
+    super.initState();
+    _scroll = ScrollController()..addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scroll.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (!_scroll.hasClients) return;
+    final nearEnd =
+        _scroll.position.pixels >= _scroll.position.maxScrollExtent - 80;
+    if (nearEnd && widget.hasMore && !widget.loadingMore) {
+      context.read<TrendingBloc>().add(const TrendingNextPageRequested());
+    }
+  }
 
   @override
   Widget build(BuildContext context) => SizedBox(
     height: 184,
     child: ListView.separated(
+      controller: _scroll,
       scrollDirection: Axis.horizontal,
-      itemCount: items.length,
+      itemCount: widget.items.length + (widget.loadingMore ? 1 : 0),
       separatorBuilder: (_, _) => const SizedBox(width: 12),
       itemBuilder: (context, index) {
-        final item = items[index];
+        if (index >= widget.items.length) {
+          return const SizedBox(
+            width: 56,
+            child: Center(
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ),
+          );
+        }
+        final item = widget.items[index];
         return SizedBox(
           width: 104,
           child: MediaGridCard.candidate(
             candidate: item,
-            onTap: () => onOpen(item),
+            onTap: () => widget.onOpen(item),
           ),
         );
       },

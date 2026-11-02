@@ -24,15 +24,22 @@ final class TmdbRemoteDataSource {
     int page = 1,
   }) => _search('tv', query, page);
 
-  Future<List<Map<String, Object?>>> trending(String type) async {
+  Future<List<Map<String, Object?>>> trending(
+    String type, {
+    int page = 1,
+  }) async {
     if (type != 'movie' && type != 'tv') {
       throw ArgumentError.value(type, 'type');
     }
+    if (page < 1 || page > 500) throw RangeError.range(page, 1, 500);
     final response = await _client.get(
-      Uri.https('api.themoviedb.org', '/3/trending/$type/day'),
+      Uri.https('api.themoviedb.org', '/3/trending/$type/day', {
+        'page': '$page',
+      }),
       headers: _headers,
     );
-    final results = response.requireObject()['results'];
+    final body = response.requireObject();
+    final results = body['results'];
     if (results is! List) throw const ApiResponseFormatException();
     try {
       return results
