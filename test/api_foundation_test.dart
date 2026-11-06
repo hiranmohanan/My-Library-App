@@ -131,4 +131,22 @@ void main() {
     ]);
     expect(page.items.map((item) => item.title), ['Film', 'Series']);
   });
+
+  test('seasonDetails calls TMDB tv season endpoint', () async {
+    final client = ApiClient(
+      MockClient((request) async {
+        expect(request.headers['Authorization'], 'Bearer test-token');
+        expect(request.url.path, '/3/tv/100/season/1');
+        return http.Response(
+          '{"id":1,"season_number":1,"episodes":[{"id":10,"episode_number":1,"season_number":1,"name":"Pilot"}]}',
+          200,
+        );
+      }),
+    );
+    addTearDown(client.close);
+    final tmdb = TmdbRemoteDataSource(client, 'test-token');
+    final details = await tmdb.seasonDetails(100, 1);
+    expect(details['season_number'], 1);
+    expect((details['episodes'] as List).length, 1);
+  });
 }

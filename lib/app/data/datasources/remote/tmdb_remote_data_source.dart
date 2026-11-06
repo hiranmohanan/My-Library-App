@@ -89,4 +89,15 @@ final class TmdbRemoteDataSource {
     );
     return response.requireObject();
   }
+
+  /// Fetch details for a single TV season including its episodes list.
+  Future<Map<String, Object?>> seasonDetails(int seriesId, int season) async {
+    if (seriesId <= 0) throw RangeError.value(seriesId, 'seriesId');
+    if (season < 0) throw RangeError.value(season, 'season');
+    final response = await _client.get(
+      Uri.https('api.themoviedb.org', '/3/tv/$seriesId/season/$season'),
+      headers: _headers,
+    );
+    return response.requireObject();
+  }
 }

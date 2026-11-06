@@ -13,6 +13,7 @@ final class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc(this._movies, this._series, this._books)
     : super(const SearchState()) {
     on<SearchTypeChanged>((event, emit) {
+      if (event.type == state.type) return;
       _debounce?.cancel();
       _request++;
       emit(
@@ -20,6 +21,9 @@ final class SearchBloc extends Bloc<SearchEvent, SearchState> {
           type: event.type,
           query: state.query,
           clearVersion: state.clearVersion,
+          status: state.query.trim().isNotEmpty
+              ? SearchStatus.loading
+              : SearchStatus.idle,
         ),
       );
       if (state.query.trim().isNotEmpty) add(const SearchSubmitted());
@@ -27,15 +31,16 @@ final class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<SearchQueryChanged>((event, emit) {
       _request++;
       _debounce?.cancel();
+      final hasQuery = event.query.trim().isNotEmpty;
       emit(
         state.copyWith(
           query: event.query,
           results: const [],
-          status: SearchStatus.idle,
+          status: hasQuery ? SearchStatus.loading : SearchStatus.idle,
           clearError: true,
         ),
       );
-      if (event.query.trim().isNotEmpty) {
+      if (hasQuery) {
         _debounce = Timer(
           const Duration(milliseconds: 400),
           () => add(const SearchSubmitted()),

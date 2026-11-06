@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/constants/media_labels.dart';
+import '../data/models/tmdb_episode.dart';
+import '../data/models/tmdb_season.dart';
 import '../modules/media/domain/media_type.dart';
+import '../modules/search/bloc/season_episodes_cubit.dart';
 import 'app_text.dart';
 import 'media_poster.dart';
 
@@ -32,6 +35,7 @@ class MediaDetailsContent extends StatelessWidget {
     this.tagline,
     this.homepage,
     this.originCountry,
+    this.seasons,
     this.actionEnabled = true,
     this.footer,
     super.key,
@@ -56,6 +60,7 @@ class MediaDetailsContent extends StatelessWidget {
   final String? tagline;
   final String? homepage;
   final List<String>? originCountry;
+  final List<TmdbSeason>? seasons;
   final String actionLabel;
   final VoidCallback onAction;
   final VoidCallback onBack;
@@ -216,6 +221,12 @@ class MediaDetailsContent extends StatelessWidget {
                       onPressed: () => context.read<_SynopsisCubit>().toggle(),
                       child: AppText(expanded ? 'Show less' : 'Read more'),
                     ),
+
+                  // Seasons & Episodes (series only)
+                  if (seasons != null && seasons!.isNotEmpty) ...[
+                    const SizedBox(height: 20),
+                    _SeasonsSection(seasons: seasons!),
+                  ],
 
                   // Details table
                   const SizedBox(height: 20),
@@ -475,6 +486,292 @@ class _TableRow extends StatelessWidget {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+// ── Seasons & Episodes section ────────────────────────────────────────────────
+
+class _SeasonsSection extends StatelessWidget {
+  const _SeasonsSection({required this.seasons});
+  final List<TmdbSeason> seasons;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    SeasonEpisodesCubit? cubit;
+    try {
+      cubit = context.read<SeasonEpisodesCubit>();
+    } catch (_) {
+      // Cubit not provided — episodes won't be expandable.
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppText('Seasons', style: theme.textTheme.titleSmall),
+        const SizedBox(height: 8),
+        for (final season in seasons)
+          _SeasonTile(season: season, canLoadEpisodes: cubit != null),
+      ],
+    );
+  }
+}
+
+class _SeasonTile extends StatelessWidget {
+  const _SeasonTile({required this.season, required this.canLoadEpisodes});
+  final TmdbSeason season;
+  final bool canLoadEpisodes;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    if (!canLoadEpisodes) {
+      return _SeasonHeader(season: season);
+    }
+    return BlocBuilder<SeasonEpisodesCubit, SeasonEpisodesState>(
+      builder: (context, state) {
+        final episodes = state.episodes[season.seasonNumber];
+        final isLoading = state.loadingSeason == season.seasonNumber;
+        final hasError = state.errorSeason == season.seasonNumber;
+        final isExpanded = state.expandedSeasons.contains(season.seasonNumber);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+              borderRadius: BorderRadius.circular(8),
+              onTap: () {
+                if (!isLoading) {
+                  context.read<SeasonEpisodesCubit>().toggleSeason(
+                    season.seasonNumber,
+                  );
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                child: Row(
+                  children: [
+                    if (season.posterUrl != null)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(6),
+                          child: SizedBox(
+                            width: 48,
+                            height: 72,
+                            child: MediaPoster(
+                              title: season.name,
+                              url: season.posterUrl,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            season.name,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          AppText(
+                            '${season.episodeCount} episode${season.episodeCount != 1 ? 's' : ''}'
+                            '${season.airDate != null && season.airDate!.length >= 4 ? ' · ${season.airDate!.substring(0, 4)}' : ''}',
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (isLoading)
+                      const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    else
+                      Icon(
+                        isExpanded ? Icons.expand_less : Icons.expand_more,
+                        size: 20,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            if (hasError)
+              Padding(
+                padding: const EdgeInsets.only(left: 60, bottom: 4),
+                child: AppText(
+                  'Could not load episodes.',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.error,
+                  ),
+                ),
+              ),
+            if (isExpanded && episodes != null && episodes.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(left: 16, bottom: 8),
+                child: Column(
+                  children: [
+                    for (final ep in episodes) _EpisodeTile(episode: ep),
+                  ],
+                ),
+              ),
+            if (isExpanded && episodes != null && episodes.isEmpty)
+              Padding(
+                padding: const EdgeInsets.only(left: 60, bottom: 8),
+                child: AppText(
+                  'No episode details available.',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ),
+            Divider(height: 1, color: theme.colorScheme.outlineVariant),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _SeasonHeader extends StatelessWidget {
+  const _SeasonHeader({required this.season});
+  final TmdbSeason season;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        children: [
+          if (season.posterUrl != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: SizedBox(
+                  width: 48,
+                  height: 72,
+                  child: MediaPoster(
+                    title: season.name,
+                    url: season.posterUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppText(
+                  season.name,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                AppText(
+                  '${season.episodeCount} episode${season.episodeCount != 1 ? 's' : ''}'
+                  '${season.airDate != null && season.airDate!.length >= 4 ? ' · ${season.airDate!.substring(0, 4)}' : ''}',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _EpisodeTile extends StatelessWidget {
+  const _EpisodeTile({required this.episode});
+  final TmdbEpisode episode;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (episode.stillUrl != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: SizedBox(
+                  width: 80,
+                  height: 45,
+                  child: MediaPoster(
+                    title: episode.name,
+                    url: episode.stillUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppText(
+                  'E${episode.episodeNumber} · ${episode.name}',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                  maxLines: 2,
+                ),
+                if (episode.runtime != null || episode.airDate != null)
+                  AppText(
+                    [
+                      if (episode.runtime != null) '${episode.runtime} min',
+                      if (episode.airDate != null) episode.airDate,
+                    ].join(' · '),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                      fontSize: 11,
+                    ),
+                  ),
+                if (episode.overview != null &&
+                    episode.overview!.trim().isNotEmpty)
+                  AppText(
+                    episode.overview!,
+                    maxLines: 2,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                      fontSize: 11,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          if (episode.voteAverage != null && episode.voteAverage! > 0)
+            Padding(
+              padding: const EdgeInsets.only(left: 6),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.star, size: 12, color: theme.colorScheme.tertiary),
+                  const SizedBox(width: 2),
+                  AppText(
+                    episode.voteAverage!.toStringAsFixed(1),
+                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 11),
+                  ),
+                ],
+              ),
+            ),
         ],
       ),
     );

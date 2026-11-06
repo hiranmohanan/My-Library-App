@@ -2,6 +2,7 @@ import '../../modules/media/domain/media_candidate.dart';
 import '../../modules/media/domain/media_entity.dart';
 import '../../modules/media/domain/media_status.dart';
 import '../../modules/media/domain/media_type.dart';
+import 'tmdb_season.dart';
 
 abstract final class MediaRecord {
   static Map<String, Object?> encode(MediaEntity media) => {
@@ -67,6 +68,16 @@ abstract final class MediaRecord {
         ? rawCountry.whereType<String>().toList()
         : null;
 
+    // Seasons: present as a list of maps in TV detail responses.
+    final rawSeasons = value['seasons'];
+    final seasons = rawSeasons is List
+        ? rawSeasons
+              .whereType<Map>()
+              .map((s) => TmdbSeason.fromJson(Map<String, Object?>.from(s)))
+              .whereType<TmdbSeason>()
+              .toList()
+        : null;
+
     return MediaCandidate(
       mediaType: type,
       externalSource: ExternalSource.tmdb,
@@ -101,6 +112,9 @@ abstract final class MediaRecord {
           ? value['homepage'] as String
           : null,
       originCountry: originCountry,
+      seasons: type == MediaType.series && seasons != null && seasons.isNotEmpty
+          ? seasons
+          : null,
     );
   }
 

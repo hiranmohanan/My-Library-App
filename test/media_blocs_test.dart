@@ -15,9 +15,14 @@ import 'package:my_library_app/app/modules/media/domain/media_repository.dart';
 import 'package:my_library_app/app/modules/media/domain/media_status.dart';
 import 'package:my_library_app/app/modules/media/domain/media_type.dart';
 import 'package:my_library_app/app/modules/media/domain/media_use_cases.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+import 'package:my_library_app/app/data/api/api_client.dart';
+import 'package:my_library_app/app/data/datasources/remote/tmdb_remote_data_source.dart';
 import 'package:my_library_app/app/modules/media_details/bloc/media_details_bloc.dart';
 import 'package:my_library_app/app/modules/profile/bloc/profile_bloc.dart';
 import 'package:my_library_app/app/modules/search/bloc/search_bloc.dart';
+import 'package:my_library_app/app/modules/search/bloc/season_episodes_cubit.dart';
 import 'package:my_library_app/app/modules/settings/bloc/settings_bloc.dart';
 import 'package:my_library_app/app/theme_controller.dart';
 
@@ -377,4 +382,88 @@ void main() {
     await settings.close();
     await theme.close();
   });
+
+  test(
+    'search type switch keeps query text and performs search in new type',
+    () async {
+      final search = SearchBloc(
+        SearchMovies(repository),
+        SearchSeries(repository),
+        SearchBooks(repository),
+      );
+      search.add(const SearchTypeChanged(MediaType.movie));
+      search.add(const SearchQueryChanged('Breaking'));
+      await _next(search.stream, (state) => state.query == 'Breaking');
+      search.add(const SearchSubmitted());
+      final movieResult = await _next(
+        search.stream,
+        (state) => state.status == SearchStatus.success,
+      );
+      expect(movieResult.type, MediaType.movie);
+      expect(movieResult.results.single.mediaType, MediaType.movie);
+
+      // Switch to Series: query must be preserved and search must trigger automatically for series.
+      search.add(const SearchTypeChanged(MediaType.series));
+      final seriesResult = await _next(
+        search.stream,
+        (state) =>
+            state.status == SearchStatus.success &&
+            state.type == MediaType.series,
+      );
+      expect(seriesResult.query, 'Breaking');
+      expect(seriesResult.results.single.mediaType, MediaType.series);
+
+      // Clear search: query is reset and clearVersion increments.
+      search.add(const SearchCleared());
+      final cleared = await _next(
+        search.stream,
+        (state) => state.query.isEmpty && state.clearVersion > 0,
+      );
+      expect(cleared.query, isEmpty);
+      expect(cleared.results, isEmpty);
+      expect(cleared.status, SearchStatus.idle);
+      await search.close();
+    },
+  );
+
+  test(
+    'SeasonEpisodesCubit toggles expansion and caches loaded episodes',
+    () async {
+      var apiCalls = 0;
+      final client = ApiClient(
+        MockClient((request) async {
+          apiCalls++;
+          expect(request.url.path, '/3/tv/42/season/1');
+          return http.Response(
+            '{"id":1,"season_number":1,"episodes":[{"id":101,"episode_number":1,"season_number":1,"name":"Pilot"}]}',
+            200,
+          );
+        }),
+      );
+      addTearDown(client.close);
+      final tmdb = TmdbRemoteDataSource(client, 'token');
+      final cubit = SeasonEpisodesCubit(tmdb, 42);
+
+      expect(cubit.state.expandedSeasons, isEmpty);
+
+      // Expand season 1 -> loads from API
+      await cubit.toggleSeason(1);
+      expect(cubit.state.expandedSeasons.contains(1), isTrue);
+      expect(cubit.state.episodes[1]?.length, 1);
+      expect(cubit.state.episodes[1]?.first.name, 'Pilot');
+      expect(apiCalls, 1);
+
+      // Collapse season 1 -> removes from expanded, does not call API
+      await cubit.toggleSeason(1);
+      expect(cubit.state.expandedSeasons.contains(1), isFalse);
+      expect(apiCalls, 1);
+
+      // Re-expand season 1 -> uses cached episodes, does not call API again
+      await cubit.toggleSeason(1);
+      expect(cubit.state.expandedSeasons.contains(1), isTrue);
+      expect(apiCalls, 1);
+
+      await cubit.close();
+    },
+  );
 }

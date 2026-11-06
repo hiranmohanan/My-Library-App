@@ -1,3 +1,4 @@
+import '../../../data/models/tmdb_season.dart';
 import 'media_type.dart';
 
 /// An external result that has not yet been added to a user's library.
@@ -24,6 +25,7 @@ final class MediaCandidate {
     this.tagline,
     this.homepage,
     this.originCountry,
+    this.seasons,
   }) {
     if (externalSource != mediaType.externalSource) {
       throw ArgumentError('External source does not match media type.');
@@ -79,4 +81,7 @@ final class MediaCandidate {
 
   /// Country codes of origin (e.g. ['US']).
   final List<String>? originCountry;
+
+  /// Season summaries (series only, from TMDB detail response).
+  final List<TmdbSeason>? seasons;
 }

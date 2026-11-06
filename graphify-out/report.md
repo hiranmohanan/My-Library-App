@@ -1,5 +1,5 @@
 # Graphify report
 
-111 Dart files, 359 local dependencies.
+114 Dart files, 373 local dependencies.
 
 Use `dart run tool/graphify.dart query "<term>"` to find files, their direct dependencies, and consumers.
